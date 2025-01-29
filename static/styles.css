@@ -1,0 +1,86 @@
+:root {
+    --background-image: url('back.jpg'); /* Replace with your actual path */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-image) no-repeat center center/cover;
+    color: #333333;
+    text-align: center;
+    backdrop-filter: blur(5px); /* Adds a subtle blur effect */
+}
+
+h1 {
+    font-size: 32px;
+    color: #222222;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Makes the heading stand out */
+}
+
+.image-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container .predicted-label {
+    position: absolute;
+    top: -20px; /* Places the label above the image */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent label background */
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.image-container img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px; /* Ensures spacing between image and button */
+    padding: 12px 25px;
+    font-size: 18px;
+    color: #ffffff;
+    background: linear-gradient(45deg, #ff7e5f, #feb47b); /* Gradient background */
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.1); /* Slightly enlarges on hover */
+    background: linear-gradient(45deg, #feb47b, #ff7e5f); /* Reverse gradient */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.btn:active {
+    transform: scale(0.95); /* Shrinks slightly on click */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.transparent-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent container */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    text-align: center;
+}

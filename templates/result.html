@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Cancer Detection Result</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --main-color: #5dd0e1;
+            --button-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 126, 95, 0.4));
+            --button-hover-gradient: linear-gradient(135deg, rgba(255, 126, 95, 0.6), rgba(254, 180, 123, 0.8));
+            --background-overlay: rgba(0, 0, 0, 0.5);
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            color: var(--main-color);
+            background: linear-gradient(
+                rgba(0, 0, 0, 0.7),
+                rgba(0, 0, 0, 0.7)
+            ), url('/static/bg1.jpg') no-repeat center center/cover;
+            background-blend-mode: overlay;
+            overflow-x: hidden;
+            padding-bottom: 50px; /* Ensures spacing at the bottom */
+        }
+
+        h1 {
+            font-size: 40px;
+            text-align: center;
+            margin: 0 0 20px 0;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        h2 {
+            font-size: 24px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+        }
+
+        /* Image Container */
+        .image-container {
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+            opacity: 0.9; /* Semi-transparent */
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 16px;
+            color: var(--main-color);
+            background: var(--button-gradient);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background: var(--button-hover-gradient);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Precautions Section */
+        #precautions {
+            width: 90%;
+            max-width: 800px;
+            background: var(--background-overlay);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        ul {
+            text-align: left;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0 15px;
+            color: #f0f0f0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            ul {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <h1>Lung Cancer Detection</h1>
+    {% if prediction %}
+    <h2>Detected Cancer Nodule: {{ prediction }}</h2>
+    <div class="image-container">
+        {% if image_path %}
+        <img src="{{ url_for('static', filename=image_path.split('static/')[1]) }}" alt="Uploaded Image">
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="btn-container">
+        <a href="/prediction" class="btn">Go Back</a>
+        <a href="#precautions" class="btn">Precautions</a>
+    </div>
+
+    <!-- Precautions Section -->
+    <div id="precautions">
+        <h2>Precautions for {{ prediction }}</h2>
+        <ul>
+            {% if prediction == 'Benign' %}
+            <li>Maintain a healthy diet rich in fruits and vegetables.</li>
+            <li>Regular health check-ups for early detection.</li>
+            <li>Avoid exposure to harmful chemicals and pollutants.</li>
+            <li>Engage in regular physical activities.</li>
+            <li>Stay hydrated and follow medical advice.</li>
+            {% elif prediction == 'Malignant' %}
+            <li>Follow a treatment plan as per your doctor’s advice.</li>
+            <li>Avoid smoking and exposure to carcinogens.</li>
+            <li>Stay active and manage stress effectively.</li>
+            <li>Eat a nutrient-rich diet to boost recovery.</li>
+            <li>Join support groups for emotional resilience.</li>
+            {% elif prediction == 'Normal' %}
+            <li>Maintain regular health screenings.</li>
+            <li>Avoid smoking and secondhand smoke exposure.</li>
+            <li>Exercise regularly to improve overall health.</li>
+            <li>Protect yourself from air pollution and dust.</li>
+            <li>Follow a balanced diet with adequate nutrients.</li>
+            {% elif prediction == 'Adenocarcinoma' %}
+            <li>Consult an oncologist for treatment planning.</li>
+            <li>Avoid carcinogen exposure (e.g., asbestos, radon gas).</li>
+            <li>Engage in light exercises to stay active.</li>
+            <li>Keep track of your health condition regularly.</li>
+            <li>Stay hydrated and eat well-balanced meals.</li>
+            {% elif prediction == 'Squamous Cell Carcinoma' %}
+            <li>Avoid excessive UV exposure; use sunscreen outdoors.</li>
+            <li>Quit smoking and alcohol consumption immediately.</li>
+            <li>Maintain proper hygiene and moisturize skin regularly.</li>
+            <li>Monitor any abnormal skin changes and consult a doctor.</li>
+            <li>Increase intake of foods rich in antioxidants.</li>
+            {% endif %}
+        </ul>
+    </div>
+</body>
+</html>
