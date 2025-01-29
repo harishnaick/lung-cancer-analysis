@@ -1,6 +1,3 @@
-Here’s a **README.md** template for your **Lung Cancer Detection** repository:  
-
----
 
 # **Lung Cancer Detection using Deep Learning**
 
