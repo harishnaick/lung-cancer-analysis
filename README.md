@@ -52,20 +52,12 @@ This project aims to detect lung cancer from CT scan images using deep learning 
 - The **3D CNN model** achieved **high accuracy** in classifying lung cancer.
 - **DCGAN-generated synthetic images** helped improve model performance.
 - **GANN-based model** further optimized classification results.
-
-## **Screenshots**
-📌 *Add UI screenshots here (upload images in the repository and link them in markdown).*
-
+- 
 ## **Future Enhancements**
 - Improve accuracy using **transformer-based models**.
 - Deploy the app on **AWS/GCP for cloud-based inference**.
 - Implement **real-time image preprocessing**.
 
 ## **Contributors**
-- **Your Name** – *Machine Learning Engineer*
-- **Other Contributors (if any)**
+- ** M HARISH NAICK** – *Machine Learning Engineer*
 
-## **License**
-This project is licensed under the **MIT License**.
-
----🚀
