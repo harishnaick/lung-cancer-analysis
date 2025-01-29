@@ -71,6 +71,4 @@ This project aims to detect lung cancer from CT scan images using deep learning 
 ## **License**
 This project is licensed under the **MIT License**.
 
----
-
-Would you like to add anything specific, such as dataset links or model architecture details? 🚀
+---🚀
